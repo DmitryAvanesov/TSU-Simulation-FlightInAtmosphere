@@ -8,9 +8,13 @@ class SimulationModel {
     this.initialSpeed = 30;
     this.initialHeight = 1;
     this.initialAngle = 45;
+    this.initialMass = 5;
+    this.initialDrag = 1;
 
     this.speed = this.initialSpeed;
     this.height = this.initialHeight;
     this.angle = this.initialAngle;
+    this.mass = this.initialMass;
+    this.drag = this.initialDrag;
   }
 }

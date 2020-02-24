@@ -28,6 +28,10 @@
   margin-left: 10px;
 }
 
+.info .parameters .parameters-block:nth-child(4) {
+  margin-top: 15px;
+}
+
 .info .timer {
   margin-top: 20px;
   margin-left: 50px;

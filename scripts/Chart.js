@@ -17,6 +17,7 @@ class Chart extends React.Component {
   render() {
     if (this.props.time == 0) {
       this.model.data.length = 0;
+      this.model.setInitialValues(this.props.speed, this.props.height, this.props.angle);
     }
 
     this.model.setMaxAxis(this.props.speed, this.props.height, this.props.angle);
@@ -25,6 +26,8 @@ class Chart extends React.Component {
       this.props.speed,
       this.props.height,
       this.props.angle,
+      this.props.mass,
+      this.props.drag,
       this.props.time
     );
 

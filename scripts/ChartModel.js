@@ -6,6 +6,9 @@ class ChartModel {
     this.accDueToGr = 9.80665;
     this.maxX = 0;
     this.maxY = 0;
+
+    this.speedX = [];
+    this.speedY = [];
   }
 
   setMaxAxis(speed, height, angle) {
@@ -15,16 +18,40 @@ class ChartModel {
     this.maxY = height + Math.pow(speed, 2) * Math.pow(Math.sin(angleRad), 2) / (2 * this.accDueToGr);
   }
 
-  increaseTime(speed, height, angle, time) {
-    const timeSec = time / 1000;
+  setInitialValues(speed, height, angle) {
     const angleRad = angle * Math.PI / 180;
 
-    const newX = speed * Math.cos(angleRad) * timeSec;
+    this.data.push({
+      x: 0,
+      y: height,
+      t: 0
+    });
+
+    this.speedX.length = 0;
+    this.speedY.length = 0;
+
+    this.speedX.push(speed * Math.cos(angleRad));
+    this.speedY.push(speed * Math.sin(angleRad));
+  }
+
+  increaseTime(speed, height, angle, mass, drag, time) {
+    const previousPoint = this.data[this.data.length - 1];
+    const previousSpeedX = this.speedX[this.speedX.length - 1];
+    const previousSpeedY = this.speedY[this.speedY.length - 1];
+    const timeSec = time / 1000;
+    const timeDiff = timeSec - previousPoint.t;
+    const angleRad = angle * Math.PI / 180;
+
+    const newX = previousPoint.x + previousSpeedX * timeDiff;
     const newY = height + speed * Math.sin(angleRad) * timeSec - this.accDueToGr * Math.pow(timeSec, 2) / 2;
 
     this.data.push({
-      x: newX.toFixed(2),
-      y: newY.toFixed(2)
+      x: parseFloat(newX.toFixed(2)),
+      y: parseFloat(newY.toFixed(2)),
+      t: parseFloat(timeSec)
     });
+
+    this.speedX.push(previousSpeedX * (1 - drag / mass * timeDiff));
+    this.speedY.push(previousSpeedY - (this.accDueToGr + drag / mass * previousSpeedY) * timeDiff);
   }
 }

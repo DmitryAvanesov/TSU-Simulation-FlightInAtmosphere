@@ -38,6 +38,8 @@ class Simulation extends React.Component {
         speed={this.model.speed}
         height={this.model.height}
         angle={this.model.angle}
+        mass={this.model.mass}
+        drag={this.model.drag}
         time={this.model.time}
         callbackFinish={this.handleFinish.bind(this)}
       />
@@ -50,6 +52,8 @@ class Simulation extends React.Component {
         initialSpeed={this.model.initialSpeed}
         initialHeight={this.model.initialHeight}
         initialAngle={this.model.initialAngle}
+        initialMass={this.model.initialMass}
+        initialDrag={this.model.initialDrag}
         callbackChange={this.handleParametersChange.bind(this)}
       />
     );
@@ -83,13 +87,19 @@ class Simulation extends React.Component {
 
   handleParametersChange() {
     if (event.target.id === 'input-speed') {
-      this.model.speed = parseInt(event.target.value);
+      this.model.speed = parseFloat(event.target.value);
     }
     else if (event.target.id === 'input-height') {
-      this.model.height = parseInt(event.target.value);
+      this.model.height = parseFloat(event.target.value);
+    }
+    else if (event.target.id === 'input-angle') {
+      this.model.angle = parseFloat(event.target.value);
+    }
+    else if (event.target.id === 'input-mass') {
+      this.model.mass = parseFloat(event.target.value);
     }
     else {
-      this.model.angle = parseInt(event.target.value);
+      this.model.drag = parseFloat(event.target.value);
     }
 
     this.setState({
