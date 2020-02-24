@@ -1,0 +1,49 @@
+.recharts-wrapper {
+  display: inline-block;
+}
+
+.info {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.info .parameters {
+  margin-left: 50px;
+}
+
+.info .parameters .parameters-block {
+  margin: 10px 0;
+}
+
+.info .parameters .parameters-block * {
+  display: inline-block;
+}
+
+.info .parameters .parameters-block .parameters-name {
+  font-weight: bold;
+}
+
+.info .parameters .parameters-block input {
+  width: 100px;
+  margin-left: 10px;
+}
+
+.info .timer {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.info .button {
+  margin-top: 20px;
+  margin-left: 50px;
+  background-color: black;
+  color: white;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.css.map */
